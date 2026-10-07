@@ -35,7 +35,6 @@ def darken(filename, outfile, percent):
     returns an image darkened by a percentage
     """
     image = Image(filename)
-    print("hi")
     percent = float(percent)
     for pixel in image:
         pixel.red *= 1-percent
@@ -188,7 +187,6 @@ def collage(file1, file2, file3, file4, outfile, border_thickness):
     :return: collage that was created
     """
 
-    ## Could be a possible off by one error with the last 3 images for x/y
     image1 = Image(file1)
     image2 = Image(file2)
     image3 = Image(file3)

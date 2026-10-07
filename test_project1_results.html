@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Report</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            flex-direction: column;
+            font-family: monospace, sans-serif;
+            line-height: 1.4;
+            background-color: #f9f9f9;
+            color: rgb(0, 46, 93);
+        }
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        header, footer {
+            background-color: rgb(0, 46, 93);
+            color: white;
+            text-align: center;
+        }
+        header h1, footer p {
+            margin: 0;
+            padding: 5px 0;
+        }
+        header {
+            margin-bottom: 10px;
+        }
+        footer {
+            margin-top: 10px;
+        }
+        h2 {
+            padding: 5px 0;
+        }
+        .test-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 50px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .test-result-passed, .test-result-failed {
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px 50px;
+            position: relative;
+        }
+        .test-result-passed {
+            background-color: #d4edda;
+            border: 2px solid #c3e6cb;
+        }
+        .test-result-failed {
+            background-color: #f8d7da;
+            border: 2px solid #f5c6cb;
+        }
+        .result-header {
+            text-align: center;
+        }
+        .result-header h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .result-subheader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+            font-size: 1em;
+            padding: 0 10px;
+        }
+        .result-subheader .status, .result-subheader .score {
+            font-size: 1em;
+        }
+        .result-subheader .status h2, .result-subheader .score h2 {
+            display: inline;
+            font-size: 1em;
+            margin-right: 5px;
+        }
+        ul.test-info {
+            list-style-type: none;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        ul.test-info li {
+            margin: 6px 0;
+        }
+        ul.test-info li.fail {
+            color: #721c24;
+        }
+        ul.test-info li.pass {
+            color: #155724;
+        }
+        .blocked-message {
+            margin: 10px 20px;
+            padding: 10px;
+            font-style: italic;
+            color: #555;
+        }
+        pre.failure-output {
+            background: #fff0f0;
+            border: 1px solid #f5c6cb;
+            padding: 8px;
+            border-radius: 3px;
+            margin-top: 5px;
+            white-space: pre-wrap;
+        }
+        .comparison-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 0 10px;
+        }
+        .section {
+            flex: 1;
+            min-width: 300px;
+        }
+        .content {
+            background: rgb(245, 245, 245);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <h1>test_project1 Results</h1>
+        </header>
+        <main class="main-content">
+            <div class="test-summary">
+                <span>Passed: 0 / 3</span>
+                <span>Total Score: 0 / 0</span>
+            </div>
+            
+            
+            <div class="test-result-failed">
+                <div class="content-wrapper">
+                    <div class="result-header">
+                        <h2>Core</h2>
+                        <div class="result-subheader">
+                            <div class="status">
+                                <h2>Failed</h2>
+                            </div>
+                            <div class="score">
+                                <h2>Score:</h2> 0 / 0
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="test-info">
+                    
+                        
+                            <li class="fail">test_CORE_display_image — Fail</li>
+                            
+                                <pre class="failure-output">Image = <class 'byuimage.Image'>
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002CF656AFBB0>
+
+    @core
+    @with_import('byuimage', 'Image')
+    def test_CORE_display_image(Image, monkeypatch):
+        observed = None
+    
+        @functools.wraps(Image.show)
+        def patched_Image_show(self):
+            nonlocal observed
+            observed = self.image
+        monkeypatch.setattr(Image, 'show', patched_Image_show)
+    
+>       run_python_script('image_processing.py', '-d',
+                          test_files / 'explosion.input.jpg')
+
+project_1\test_project1.py:107: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+script = 'image_processing.py', module = '__main__'
+args = ('-d', WindowsPath('C:/Users/George/Documents/School/Fall 26/CS 111/project_1/test_files/explosion.input.jpg'))
+
+    def run_python_script(script, *args, module='__main__'):
+        """
+        Run the python script with arguments
+    
+        If the script expects STDIN, use the dialog framework instead
+    
+        :param script: Python script to run
+        :param args: Arguments to the python script
+        :param module: Defaults to '__main__'
+        :return: Namespace as a result of running the script
+        """
+        if not os.path.exists(script):
+>           pytest.fail(f'The file {script} does not exist. Did you submit it?')
+E           Failed: The file image_processing.py does not exist. Did you submit it?
+
+.venv\Lib\site-packages\byu_pytest_utils\utils.py:33: Failed</pre>
+                            
+                        
+                    
+                        
+                            <li class="fail">test_CORE_darken_filter — Fail</li>
+                            
+                                <pre class="failure-output">@functools.wraps(func)
+    def inner_func():
+>       run_python_script('image_processing.py', *script_args)
+
+project_1\test_project1.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+script = 'image_processing.py', module = '__main__'
+args = ('-k', WindowsPath('C:/Users/George/Documents/School/Fall 26/CS 111/project_1/test_files/explosion.input.jpg'), WindowsPath('C:/Users/George/Documents/School/Fall 26/CS 111/project_1/darkened-explosion.output.png'), 0.3)
+
+    def run_python_script(script, *args, module='__main__'):
+        """
+        Run the python script with arguments
+    
+        If the script expects STDIN, use the dialog framework instead
+    
+        :param script: Python script to run
+        :param args: Arguments to the python script
+        :param module: Defaults to '__main__'
+        :return: Namespace as a result of running the script
+        """
+        if not os.path.exists(script):
+>           pytest.fail(f'The file {script} does not exist. Did you submit it?')
+E           Failed: The file image_processing.py does not exist. Did you submit it?
+
+.venv\Lib\site-packages\byu_pytest_utils\utils.py:33: Failed</pre>
+                            
+                        
+                    
+                        
+                            <li class="fail">test_CORE_sepia_filter — Fail</li>
+                            
+                                <pre class="failure-output">@functools.wraps(func)
+    def inner_func():
+>       run_python_script('image_processing.py', *script_args)
+
+project_1\test_project1.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+script = 'image_processing.py', module = '__main__'
+args = ('-s', WindowsPath('C:/Users/George/Documents/School/Fall 26/CS 111/project_1/test_files/explosion.input.jpg'), WindowsPath('C:/Users/George/Documents/School/Fall 26/CS 111/project_1/sepia-explosion.output.png'))
+
+    def run_python_script(script, *args, module='__main__'):
+        """
+        Run the python script with arguments
+    
+        If the script expects STDIN, use the dialog framework instead
+    
+        :param script: Python script to run
+        :param args: Arguments to the python script
+        :param module: Defaults to '__main__'
+        :return: Namespace as a result of running the script
+        """
+        if not os.path.exists(script):
+>           pytest.fail(f'The file {script} does not exist. Did you submit it?')
+E           Failed: The file image_processing.py does not exist. Did you submit it?
+
+.venv\Lib\site-packages\byu_pytest_utils\utils.py:33: Failed</pre>
+                            
+                        
+                    
+                        
+                            <li class="fail">test_CORE_grayscale_filter — Fail</li>
+                            
+                                <pre class="failure-output">@functools.wraps(func)
+    def inner_func():
+>       run_python_script('image_processing.py', *script_args)
+
+project_1\test_project1.py:120: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+script = 'image_processing.py', module = '__main__'
+args = ('-g', WindowsPath('C:/Users/George/Documents/School/Fall 26/CS 111/project_1/test_files/explosion.input.jpg'), WindowsPath('C:/Users/George/Documents/School/Fall 26/CS 111/project_1/grayscale-explosion.output.png'))
+
+    def run_python_script(script, *args, module='__main__'):
+        """
+        Run the python script with arguments
+    
+        If the script expects STDIN, use the dialog framework instead
+    
+        :param script: Python script to run
+        :param args: Arguments to the python script
+        :param module: Defaults to '__main__'
+        :return: Namespace as a result of running the script
+        """
+        if not os.path.exists(script):
+>           pytest.fail(f'The file {script} does not exist. Did you submit it?')
+E           Failed: The file image_processing.py does not exist. Did you submit it?
+
+.venv\Lib\site-packages\byu_pytest_utils\utils.py:33: Failed</pre>
+                            
+                        
+                    
+                    </ul>
+                    
+                </div>
+            </div>
+            
+            <div class="test-result-failed">
+                <div class="content-wrapper">
+                    <div class="result-header">
+                        <h2>Advanced</h2>
+                        <div class="result-subheader">
+                            <div class="status">
+                                <h2>Failed</h2>
+                            </div>
+                            <div class="score">
+                                <h2>Score:</h2> 0 / 0
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div class="blocked-message">Tests for this tier will run when all prerequisite tiers have passed.</div>
+                    
+                </div>
+            </div>
+            
+            <div class="test-result-failed">
+                <div class="content-wrapper">
+                    <div class="result-header">
+                        <h2>Excellent</h2>
+                        <div class="result-subheader">
+                            <div class="status">
+                                <h2>Failed</h2>
+                            </div>
+                            <div class="score">
+                                <h2>Score:</h2> 0 / 0
+                            </div>
+                        </div>
+                    </div>
+                    
+                        <div class="blocked-message">Tests for this tier will run when all prerequisite tiers have passed.</div>
+                    
+                </div>
+            </div>
+            
+            
+        </main>
+        <footer>
+            <p>Generated by byu_pytest_utils on October 07, 2026 12:40 PM</p>
+        </footer>
+    </div>
+</body>
+</html>
