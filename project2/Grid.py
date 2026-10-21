@@ -1,6 +1,12 @@
 from copy import deepcopy
 
 class Grid:
+    """
+    Creates a grid class
+    sets components of the grid to the values passed in the init function
+
+
+    """
     width = 0
     height = 0
     array = 0

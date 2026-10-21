@@ -1,4 +1,9 @@
 class Particle:
+    """
+    Creates a Particle Class that sets the default for an object equal to the grid with x and y equal to 0.
+
+
+    """
     def __init__(self, grid, x=0, y=0):
         self.grid = grid
         self.x = x

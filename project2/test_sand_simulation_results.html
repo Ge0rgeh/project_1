@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Report</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+        body {
+            flex-direction: column;
+            font-family: monospace, sans-serif;
+            line-height: 1.4;
+            background-color: #f9f9f9;
+            color: rgb(0, 46, 93);
+        }
+        .page-container {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        header, footer {
+            background-color: rgb(0, 46, 93);
+            color: white;
+            text-align: center;
+        }
+        header h1, footer p {
+            margin: 0;
+            padding: 5px 0;
+        }
+        header {
+            margin-bottom: 10px;
+        }
+        footer {
+            margin-top: 10px;
+        }
+        h2 {
+            padding: 5px 0;
+        }
+        .test-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 50px;
+            font-size: 1em;
+            font-weight: bold;
+        }
+        .test-result-passed, .test-result-failed {
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px 50px;
+            position: relative;
+        }
+        .test-result-passed {
+            background-color: #d4edda;
+            border: 2px solid #c3e6cb;
+        }
+        .test-result-failed {
+            background-color: #f8d7da;
+            border: 2px solid #f5c6cb;
+        }
+        .result-header {
+            text-align: center;
+        }
+        .result-header h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .result-subheader {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 5px;
+            font-size: 1em;
+            padding: 0 10px;
+        }
+        .result-subheader .status, .result-subheader .score {
+            font-size: 1em;
+        }
+        .result-subheader .status h2, .result-subheader .score h2 {
+            display: inline;
+            font-size: 1em;
+            margin-right: 5px;
+        }
+        ul.test-info {
+            list-style-type: none;
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        ul.test-info li {
+            margin: 6px 0;
+        }
+        ul.test-info li.fail {
+            color: #721c24;
+        }
+        ul.test-info li.pass {
+            color: #155724;
+        }
+        .blocked-message {
+            margin: 10px 20px;
+            padding: 10px;
+            font-style: italic;
+            color: #555;
+        }
+        pre.failure-output {
+            background: #fff0f0;
+            border: 1px solid #f5c6cb;
+            padding: 8px;
+            border-radius: 3px;
+            margin-top: 5px;
+            white-space: pre-wrap;
+        }
+        .comparison-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 10px 0;
+            padding: 0 10px;
+        }
+        .section {
+            flex: 1;
+            min-width: 300px;
+        }
+        .content {
+            background: rgb(245, 245, 245);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="page-container">
+        <header>
+            <h1>test_sand_simulation Results</h1>
+        </header>
+        <main class="main-content">
+            <div class="test-summary">
+                <span>Passed: 2 / 3</span>
+                <span>Total Score: 0 / 0</span>
+            </div>
+            
+            
+            <div class="test-result-passed">
+                <div class="content-wrapper">
+                    <div class="result-header">
+                        <h2>Core</h2>
+                        <div class="result-subheader">
+                            <div class="status">
+                                <h2>Passed</h2>
+                            </div>
+                            <div class="score">
+                                <h2>Score:</h2> 0 / 0
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="test-info">
+                    
+                        
+                            <li class="pass">test_CORE_particle_str — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_CORE_particle_move — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_CORE_rock_str — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_CORE_rock_physics — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_CORE_add_objects — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_CORE_remove_objects — Pass</li>
+                        
+                    
+                    </ul>
+                    
+                </div>
+            </div>
+            
+            <div class="test-result-passed">
+                <div class="content-wrapper">
+                    <div class="result-header">
+                        <h2>Advanced</h2>
+                        <div class="result-subheader">
+                            <div class="status">
+                                <h2>Passed</h2>
+                            </div>
+                            <div class="score">
+                                <h2>Score:</h2> 0 / 0
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="test-info">
+                    
+                        
+                            <li class="pass">test_ADVANCED_rock_physics — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_and_bubble_classes — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_class — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_class — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_str — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_str — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_physics_out_of_bounds — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_physics_out_of_bounds — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_physics_cant_move — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_physics_cant_move — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_physics_straight_down — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_physics_straight_up — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_physics_down_left — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_physics_up_right — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_physics_down_right — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_physics_up_left — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_physics_corner_rule — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_physics_corner_rule — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_move_out_of_bounds — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_move_out_of_bounds — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_move_cant_move — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_move_cant_move — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_move_straight_down — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_move_straight_up — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_move_down_left — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_move_up_right — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_move_down_right — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_move_up_left — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_sand_move_corner_rule — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_bubble_move_corner_rule — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_ADVANCED_move_falling_example — Pass</li>
+                        
+                    
+                    </ul>
+                    
+                </div>
+            </div>
+            
+            <div class="test-result-failed">
+                <div class="content-wrapper">
+                    <div class="result-header">
+                        <h2>Excellent</h2>
+                        <div class="result-subheader">
+                            <div class="status">
+                                <h2>Failed</h2>
+                            </div>
+                            <div class="score">
+                                <h2>Score:</h2> 0 / 0
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <ul class="test-info">
+                    
+                        
+                            <li class="pass">test_EXCELLENT_do_whole_grid_all_falling_rules — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_EXCELLENT_sand_falls_together — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_EXCELLENT_bubbles_rise_together — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_EXCELLENT_do_whole_grid_until_sand_settles — Pass</li>
+                        
+                    
+                        
+                            <li class="pass">test_EXCELLENT_do_whole_grid_until_bubbles_settle — Pass</li>
+                        
+                    
+                        
+                            <li class="fail">test_EXCELLENT_docstring — Fail</li>
+                            
+                                <pre class="failure-output">Grid = <class 'Grid.Grid'>, Sand = <class 'Grid_Objects.Sand'>
+Rock = <class 'Grid_Objects.Rock'>, Bubble = <class 'Grid_Objects.Bubble'>
+do_whole_grid = <function do_whole_grid at 0x000001E529694EA0>
+add_object = <function add_object at 0x000001E529694D60>
+remove_object = <function remove_object at 0x000001E529694E00>
+Particle = <class 'Particle.Particle'>
+
+    @excellent
+    @with_import('Particle', 'Particle')
+    @with_import('sand_simulation', 'remove_object')
+    @with_import('sand_simulation', 'add_object')
+    @with_import('sand_simulation', 'do_whole_grid')
+    @with_import('Grid_Objects', 'Bubble')
+    @with_import('Grid_Objects', 'Rock')
+    @with_import('Grid_Objects', 'Sand')
+    @with_import('Grid', 'Grid')
+    def test_EXCELLENT_docstring(Grid, Sand, Rock, Bubble, do_whole_grid, add_object, remove_object, Particle):
+        class_docstring_test(Particle)
+        class_docstring_test(Grid)
+>       class_docstring_test(Sand)
+
+project_1\project2\test_sand_simulation.py:1096: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+cls = <class 'Grid_Objects.Sand'>
+
+    def class_docstring_test(cls):
+        owner = getattr(cls, '__module__', None) or getattr(cls, '__name__', None)
+        for func in dir(cls):
+            attr = getattr(cls, func)
+            if callable(attr) and getattr(attr, '__module__', None) == owner:
+                if func.startswith('__') or func == 'main':
+                    continue
+>               assert getattr(cls, func).__doc__ is not None, f"{func}() is missing a docstring"
+E               AssertionError: is_move_ok() is missing a docstring
+E               assert None is not None
+E                +  where None = <function Sand.is_move_ok at 0x000001E5296944A0>.__doc__
+E                +    where <function Sand.is_move_ok at 0x000001E5296944A0> = getattr(<class 'Grid_Objects.Sand'>, 'is_move_ok')
+
+project_1\project2\test_sand_simulation.py:1081: AssertionError</pre>
+                            
+                        
+                    
+                    </ul>
+                    
+                </div>
+            </div>
+            
+            
+        </main>
+        <footer>
+            <p>Generated by byu_pytest_utils on October 21, 2026 01:15 PM</p>
+        </footer>
+    </div>
+</body>
+</html>

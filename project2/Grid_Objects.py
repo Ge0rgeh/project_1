@@ -1,11 +1,16 @@
 from Particle import Particle
 
 class Sand(Particle):
+    """
+Decides where the sand particle should move next
+
+sand tries to fall straight down. If blocked it first tries to move left-down then right down if open.
+
+returns a tuple (x,y) with the new position, or None if the sand can't move
+    """
     def physics(self):
         """
-        creates a method that determines the physics of sand objects
-
-        returns the x and y coordinates of each case
+        Sets the physics of the sand particles
         """
         # check if below is open
         if self.is_move_ok(self.x, self.y + 1):
@@ -23,7 +28,11 @@ class Sand(Particle):
         return None
 
     def is_move_ok(self, x, y):
-        # check if in the bounds of grid
+        """
+        check if in the bounds of grid
+        takes an x and y values
+        returns if those values are in the bounds of the grid
+        """
         if not self.grid.in_bounds(x, y):
             return False
 
@@ -39,14 +48,23 @@ class Rock(Particle):
     returns None
     """
     def physics(self):
+        """
+        returns None
+        """
         return None
 
 
 class Bubble(Particle):
+    """
+Creates a bubble particle
+Then decided where the bubble should move next
+The bubble moves up if not blocked
+if it is blocked it tries to move right then down or left then down if open.
+Returns a tuple with the new position or None if the bubble can't move
+        """
     def physics(self):
         """
-        Creates a method that determines the physics of bubble objects
-        returns the final x and y coordinates of the objects
+        Sets the physics of the Bubble particles
         """
         # check if above is open
         if self.is_move_ok(self.x, self.y - 1):
@@ -64,6 +82,12 @@ class Bubble(Particle):
         return None
 
     def is_move_ok(self, x, y):
+        """
+        Checks if it is okay to move up
+        takes in x and y values
+        returns if those values are in the bounds of the grid
+
+        """
         # check if in the bounds of grid
         if not self.grid.in_bounds(x, y):
             return False
