@@ -2,6 +2,11 @@ from Particle import Particle
 
 class Sand(Particle):
     def physics(self):
+        """
+        creates a method that determines the physics of sand objects
+
+        returns the x and y coordinates of each case
+        """
         # check if below is open
         if self.is_move_ok(self.x, self.y + 1):
             return self.x, self.y + 1
@@ -29,12 +34,20 @@ class Sand(Particle):
 
 
 class Rock(Particle):
+    """
+    takes in a particle object uses a null physics method
+    returns None
+    """
     def physics(self):
         return None
 
 
 class Bubble(Particle):
     def physics(self):
+        """
+        Creates a method that determines the physics of bubble objects
+        returns the final x and y coordinates of the objects
+        """
         # check if above is open
         if self.is_move_ok(self.x, self.y - 1):
             return self.x, self.y - 1

@@ -5,6 +5,9 @@ class Particle:
         self.y = y
 
     def move(self):
+        """
+        Moves an object to a new location based on the physics function and then sets the object's coordinates to the new location.
+        """
 
         new_coords = self.physics()
 
@@ -19,4 +22,7 @@ class Particle:
 
 
     def __str__(self) -> str:
+        """
+        Returns a string with the output of the function
+        """
         return f'{type(self).__name__}({self.x},{self.y})'
